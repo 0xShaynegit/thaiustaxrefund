@@ -18,9 +18,9 @@ export default {
       });
     }
 
-    // For everything else, return 404 to let Cloudflare serve static files
-    // This allows the assets binding to handle static file serving
-    return env.ASSETS.fetch(request);
+    // For everything else, return 404
+    // Static files are served by Cloudflare Pages
+    return new Response('Not Found', { status: 404 });
   },
 };
 

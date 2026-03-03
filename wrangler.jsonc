@@ -5,17 +5,13 @@
   "compatibility_date": "2026-03-03",
   "main": "src/index.js",
 
-  "assets": {
-    "directory": "./"
-  },
-
   "routes": [
     {
-      "pattern": "thaiustaxrefund.com/*",
+      "pattern": "thaiustaxrefund.com/api/form",
       "zone_name": "thaiustaxrefund.com"
     },
     {
-      "pattern": "www.thaiustaxrefund.com/*",
+      "pattern": "www.thaiustaxrefund.com/api/form",
       "zone_name": "thaiustaxrefund.com"
     }
   ],
