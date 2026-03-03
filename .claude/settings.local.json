@@ -3,7 +3,8 @@
     "allow": [
       "Bash(python3:*)",
       "Bash(grep:*)",
-      "Bash(wrangler deploy:*)"
+      "Bash(wrangler deploy:*)",
+      "Bash(xargs sed:*)"
     ]
   }
 }
