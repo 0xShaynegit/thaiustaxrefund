@@ -9,6 +9,17 @@
     "directory": "./"
   },
 
+  "routes": [
+    {
+      "pattern": "thaiustaxrefund.com/*",
+      "zone_name": "thaiustaxrefund.com"
+    },
+    {
+      "pattern": "www.thaiustaxrefund.com/*",
+      "zone_name": "thaiustaxrefund.com"
+    }
+  ],
+
   "env": {
     "production": {
       "vars": {
