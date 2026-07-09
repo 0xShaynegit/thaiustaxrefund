@@ -7,17 +7,6 @@ export default {
       return handleFormSubmit(request, env);
     }
 
-    // Handle CORS preflight for form endpoint
-    if (url.pathname === '/api/form' && request.method === 'OPTIONS') {
-      return new Response(null, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type',
-        },
-      });
-    }
-
     // For everything else, return 404
     // Static files are served by Cloudflare Pages
     return new Response('Not Found', { status: 404 });
