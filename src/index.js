@@ -17,6 +17,29 @@ async function handleFormSubmit(request, env) {
   try {
     const formData = await request.formData();
 
+    // Verify Turnstile token
+    const turnstileToken = formData.get('cf-turnstile-response') || '';
+    const verifyResponse = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        secret: env.TURNSTILE_SECRET_KEY,
+        response: turnstileToken,
+        remoteip: request.headers.get('CF-Connecting-IP'),
+      }),
+    });
+    const verifyResult = await verifyResponse.json();
+
+    if (!verifyResult.success) {
+      return new Response(
+        JSON.stringify({ error: 'Bot verification failed' }),
+        {
+          status: 403,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
     // Extract form fields
     const fullName = formData.get('kb-field-name') || '';
     const companyName = formData.get('kb-field-company') || '';

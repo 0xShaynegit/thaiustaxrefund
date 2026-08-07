@@ -17,6 +17,7 @@ dist/
 
 # Claude
 .claude/
+.ua/
 
 # IDE
 .vscode/
